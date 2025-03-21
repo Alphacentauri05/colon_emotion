@@ -33,6 +33,14 @@ model = joblib.load(MODEL_PATH)
 # Initialize FastAPI app
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins, or specify a list of allowed domains
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
+
 def extract_features(audio, sr):
     """Extract features from audio."""
     pitch_values = librosa.yin(audio, fmin=50, fmax=300)
