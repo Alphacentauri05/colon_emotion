@@ -1,5 +1,5 @@
 import librosa
-import CORSMiddleware
+from starlette.middleware.cors import CORSMiddleware
 import numpy as np
 import joblib
 import requests
